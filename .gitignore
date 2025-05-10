@@ -22,3 +22,10 @@
 *.log
 *.tlog
 *.tmp
+
+*.ilk
+*.pch
+*.idb
+*.aps
+*.exe.recipe
+*.res
