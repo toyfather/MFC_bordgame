@@ -1,0 +1,21 @@
+# 로컬 사용자/IDE 설정
+*.suo
+*.user
+*.rsuser
+.vs/
+
+# 빌드 산출물
+[Bb]in/
+[Oo]bj/
+*.exe
+*.dll
+*.pdb
+*.obj
+
+# MFC/ATL 중간 산출물
+*.tlh
+*.tli
+
+# 기타 임시 파일
+*.log
+*.tmp
