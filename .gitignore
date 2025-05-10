@@ -2,6 +2,8 @@
 *.suo
 *.user
 *.rsuser
+*.userosscache
+*.sln.docstates
 .vs/
 
 # 빌드 산출물
@@ -18,4 +20,5 @@
 
 # 기타 임시 파일
 *.log
+*.tlog
 *.tmp
