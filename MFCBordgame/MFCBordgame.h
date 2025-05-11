@@ -33,4 +33,4 @@ public:
 extern CMFCBordgameApp theApp;
 
 
-// 깃 테스트용 코드 수정ㅇㅇㅇdflifghjhgjhgv
+// 깃 테스트용 코드 수정
