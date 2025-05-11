@@ -1,6 +1,14 @@
 ﻿
 // MainFrm.h: CMainFrame 클래스의 인터페이스
 //
+#include "Common/GameState.h"
+#include "Common/GameController.h"
+#include "TurnManager/TurnManager.h"
+#include "TileManager/TileManager.h"
+#include "CombatSystem/CombatSystem.h"
+#include "SpecialSpace/SpecialSpace.h"
+#include "CMainMapDlg.h"  // 메인 맵
+
 
 #pragma once
 
@@ -37,6 +45,14 @@ protected:
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
 	DECLARE_MESSAGE_MAP()
 
+private:
+	GameState      m_gameState;
+	GameController m_controller;
+	TurnManager    m_turnMgr;
+	TileManager    m_tileMgr;
+	CombatSystem   m_combatSys;
+	SpecialSpace   m_specialSpc;
+	CMainMapDlg	   m_mapDlg;	// 메인 맵
 };
 
 

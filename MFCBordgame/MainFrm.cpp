@@ -31,8 +31,29 @@ static UINT indicators[] =
 // CMainFrame 생성/소멸
 
 CMainFrame::CMainFrame() noexcept
+	: m_gameState()
+	, m_controller(m_gameState)
+	, m_turnMgr()
+	, m_tileMgr()
+	, m_combatSys()
+	, m_specialSpc()
 {
 	// TODO: 여기에 멤버 초기화 코드를 추가합니다.
+	// 특수칸 모듈 연결
+	m_controller.onSpecialSpace = [&](ESpecialSpaceType type) {
+		switch (type)
+		{
+		case ESpecialSpaceType::WorldTour:
+			m_specialSpc.HandleWorldTour(m_gameState.currentPlayerIndex);
+			break;
+		case ESpecialSpaceType::Island:
+			m_specialSpc.HandleIsland(m_gameState.currentPlayerIndex);
+			break;
+		case ESpecialSpaceType::CoinBank:
+			m_specialSpc.HandleCoinBank(m_gameState.currentPlayerIndex);
+			break;
+		}
+	};
 }
 
 CMainFrame::~CMainFrame()
@@ -63,6 +84,19 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	EnableDocking(CBRS_ALIGN_ANY);
 	DockControlBar(&m_wndToolBar);
 
+	// 여기부터 수정해보자
+	// (1) 모델리스 다이얼로그 생성
+	m_mapDlg.Create(IDD_MAIN_MAP, this);
+
+	// (2) 다이얼로그 위치/크기 조정: 클라이언트 영역 전체 사용
+	CRect rc;
+	GetClientRect(&rc);
+	m_mapDlg.MoveWindow(&rc);
+
+	// (3) 화면에 보이기
+	m_mapDlg.ShowWindow(SW_SHOW);
+
+	AfxMessageBox(_T("==StartGame=="));
 
 	return 0;
 }
@@ -93,4 +127,3 @@ void CMainFrame::Dump(CDumpContext& dc) const
 
 
 // CMainFrame 메시지 처리기
-
